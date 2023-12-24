@@ -33,6 +33,7 @@ main {
   display: grid;
   place-items: center;
   min-height: 100vh;
+
   .sec1 {
     background: $clr-gradient-outer;
     min-height: 340px;
@@ -151,6 +152,11 @@ main {
       background-color: var(--neutral400);
       color: $clr-bg;
       border-radius: 16px;
+      transition: 0.15s;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }
