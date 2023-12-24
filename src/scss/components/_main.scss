@@ -1,4 +1,6 @@
 @use "../global/config" as *;
+@use "../global/class" as *;
+@use "../global/fa" as *;
 
 :root {
   --step-0: clamp(1rem, 0.2857rem + 1.9048vw, 2rem);
@@ -7,64 +9,169 @@
   --step-3: clamp(1.7281rem, 0.1723rem + 4.1488vw, 3.9063rem);
   --step-4: clamp(2.0738rem, 0.0671rem + 5.3512vw, 4.8831rem);
   --step-5: clamp(2.4881rem, -0.0945rem + 6.8869vw, 6.1038rem);
+
+  --primary200: hsl(0, 100%, 67%);
+  --primary300: hsl(39, 100%, 56%);
+  --primary400: hsl(166, 100%, 37%);
+  --primary500: hsl(234, 85%, 45%);
+
+  //Neutral
+  --neutral100: hsl(0, 0%, 100%);
+  --neutral200: hsl(221, 100%, 96%);
+  --neutral300: hsl(241, 100%, 89%);
+  --neutral400: hsl(224, 30%, 27%);
+
+  --clr-text: #121212;
+  --clr-bg: #ffffff;
+
+  --circle-size: 130px;
+  --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 main {
-  padding: 2rem 0;
+  padding: 0.5rem 0;
   display: grid;
-  min-height: 100vh;
   place-items: center;
-  background-color: var(--clr-surface);
+  min-height: 100vh;
+  .sec1 {
+    background: $clr-gradient-outer;
+    min-height: 340px;
+    color: var(--neutral300);
+    font-size: 16px;
+    font-weight: $bold;
+    padding: 2.5rem 3.4rem;
+    box-shadow: var(--box-shadow);
 
-  &::before {
-    content: "";
-    background: url("../assets/assets/images/background-pattern-mobile.svg")
-      no-repeat center center/cover;
-    min-height: 230px;
-    position: absolute;
-    width: 100%;
-    top: 0;
-  }
+    border-radius: 0 0 28px 28px;
+    text-align: center;
 
-  .container {
-    background-color: $clr-bg;
-    padding: var(--step-2);
-    z-index: 2;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    > :first-child {
-      display: flex;
-      align-items: center;
-      gap: 1.4rem;
-      margin-bottom: 1rem;
+    > :nth-child(2) {
+      background: $clr-gradient-inner;
+      border-radius: 50%;
+      width: var(--circle-size);
+      height: var(--circle-size);
+      margin-inline: auto;
+      display: grid;
+      place-items: center;
+    }
+
+    h2,
+    h1 {
+      line-height: 1;
+      color: var(--neutral100);
+    }
+
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: $medium;
     }
   }
 
-  .trigger {
-    font-weight: $semi-bold;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: space-between;
-  }
+  .sec2 {
+    font-weight: $bold;
+    h2 {
+      font-size: 18px;
+    }
 
-  ul {
-    display: grid;
-    gap: 2.5rem;
+    padding: 2rem;
+    font-size: 16px;
+
+    ul {
+      margin: 1.5rem 0 1.6rem 0;
+      display: grid;
+      gap: 1.2rem;
+
+      > li {
+        --box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+          rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+        --circle-size: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        align-items: center;
+        color: var(--primary200);
+        box-shadow: var(--box-shadow);
+        border-radius: var(--circle-size);
+
+        .icon {
+          margin-right: 1rem;
+        }
+      }
+
+      > :nth-child(1) {
+        background-color: hsla(0, 100%, 67%, 0.068);
+        .icon {
+          @include fa-icon-solid($fa-var-bolt-lightning);
+        }
+      }
+      > :nth-child(2) {
+        color: var(--primary300);
+
+        background-color: hsla(39, 100%, 56%, 0.068);
+        .icon {
+          @include fa-icon-solid($fa-var-brain);
+        }
+      }
+      > :nth-child(3) {
+        background-color: hsla(166, 100%, 37%, 0.068);
+        color: var(--primary400);
+        .icon {
+          @include fa-icon-solid($fa-var-message);
+        }
+      }
+      > :nth-child(4) {
+        color: var(--primary500);
+        background-color: hsla(234, 85%, 45%, 0.068);
+        .icon {
+          @include fa-icon-solid($fa-var-eye);
+        }
+      }
+
+      span {
+        color: var(--neutral300);
+      }
+    }
+
+    button {
+      width: 100%;
+      text-align: center;
+      height: 3rem;
+      background-color: var(--neutral400);
+      color: $clr-bg;
+      border-radius: 16px;
+    }
   }
 }
 
 @media (min-width: 600px) {
-  main {
-    &::before {
-      background: url("../assets/assets/images/background-pattern-desktop.svg")
-        no-repeat center center/cover;
-      min-height: 330px;
+  .container {
+    display: flex;
+    box-shadow: var(--box-shadow);
+    border-radius: 26px;
+
+    > * {
+      flex: 1;
     }
 
-    .container {
-      padding: 2rem;
+    .sec1 {
+      --circle-size: 180px;
+      border-radius: 26px;
+
+      > :nth-child(1) {
+        font-size: 20px;
+      }
     }
   }
 }
