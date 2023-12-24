@@ -1,0 +1,21 @@
+@use "../global/config" as *;
+
+:root {
+  --icon-size: 22px;
+}
+
+body {
+  background-color: $clr-bg;
+  color: $clr-text;
+  font-family: $ff;
+  font-weight: $regular;
+  font-size: 16px;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-align: initial;
+  -webkit-tap-highlight-color: transparent;
+}
