@@ -24,8 +24,10 @@ export default function Section2() {
 
   return (
     <section className="sec2">
-      <h2>Summary</h2>
-      <ul>{ListItem}</ul>
+      <div>
+        <h2>Summary</h2>
+        <ul>{ListItem}</ul>
+      </div>
       <button>Continue</button>
     </section>
   );
