@@ -24,66 +24,71 @@
   --clr-text: #121212;
   --clr-bg: #ffffff;
 
-  --circle-size: 130px;
+  --circle-size: 140px;
   --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 main {
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
   display: grid;
   place-items: center;
   min-height: 100vh;
 
   .sec1 {
     background: $clr-gradient-outer;
-    min-height: 340px;
+    min-height: 342px;
     color: var(--neutral300);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: $bold;
-    padding: 2.5rem 3.4rem;
-    box-shadow: var(--box-shadow);
 
-    border-radius: 0 0 28px 28px;
+    border-radius: 0 0 32px 32px;
     text-align: center;
+    padding: 1.6rem 0;
+    display: grid;
+    justify-content: space-around;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    > :nth-child(1) {
+      font-size: 1em;
+    }
 
     > :nth-child(2) {
-      background: $clr-gradient-inner;
+      width: 7.5em;
+      height: 7.5em;
       border-radius: 50%;
-      width: var(--circle-size);
-      height: var(--circle-size);
-      margin-inline: auto;
       display: grid;
       place-items: center;
+      margin-inline: auto;
+      background: $clr-gradient-inner;
+      margin: 1.2em auto 1.4em auto;
     }
 
-    h2,
     h1 {
-      line-height: 1;
-      color: var(--neutral100);
-    }
-
-    h2 {
-      margin-bottom: 0.5rem;
+      color: var(--clr-bg);
+      font-size: 3em;
     }
 
     span {
-      font-size: 14px;
+      font-size: 0.9em;
     }
 
-    p {
-      font-size: 14px;
-      font-weight: $medium;
+    > :last-child {
+      font-size: 0.7em;
+
+      p {
+        width: 76%;
+        margin-inline: auto;
+        margin-top: 0.7em;
+        letter-spacing: 1px;
+      }
     }
   }
 
   .sec2 {
     font-weight: $bold;
+    font-size: 18px;
+
     h2 {
-      font-size: 18px;
+      font-size: 1.1em;
     }
 
     padding: 2rem;
@@ -161,12 +166,14 @@ main {
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 695px) {
   .container {
+    --box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     display: flex;
     box-shadow: var(--box-shadow);
     border-radius: 26px;
-
+    min-height: 500px;
     > * {
       flex: 1;
     }
@@ -174,10 +181,12 @@ main {
     .sec1 {
       --circle-size: 180px;
       border-radius: 26px;
+      flex: 0 1 365px;
+      font-size: 25px;
+    }
 
-      > :nth-child(1) {
-        font-size: 20px;
-      }
+    .sec2 {
+      font-size: 22px;
     }
   }
 }
